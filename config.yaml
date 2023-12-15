@@ -1,0 +1,7 @@
+batch_size: 128
+epochs: 100
+learning_rate: 0.001
+input_size: (224, 224, 3)
+output_size: 128
+temperature: 0.5
+data_path: ./data/imagenet
