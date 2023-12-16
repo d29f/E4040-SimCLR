@@ -11,25 +11,31 @@ This repository contains our team's project for ECBM E4040 at Columbia Universit
 - Haoyu He: [hh2982, hh2982@columbia.edu]
 
 ### Built With
-- Tensorflow (Version 2.x)
+- Tensorflow 2
+- Keras
 - Google Cloud Platform
 
 ### Our project involves:
 
-1. A comprehensive review of the original paper.
-2. Implementation and replication of the paper's neural network model using TensorFlow and Python.
-3. Documentation and comparison of our results with the original paper.
+1. Coding Replication of the Paper's Neural Network Model Using TensorFlow 2 and Python.
+2. The Final Report That Summarizes the Original Paper, Provides a Brief Review of the Relevant Literature, and Presents the Details of Our Project Work and Results.
 
-### Datasets
+### Dataset
 
-(WIP) the README file has to provide detailed information on where the datasets are, how they can be accessed, and how they are used.
+The dataset we are using is CIFAR-100, which is located in the tensorflow.keras.datasets module.
 
 ### Repository Structure
 - '/augmentation': Contains all python code used for augmentation.
-- '/data': Contains our datasets used to train and test the model.
-- '/xxx.ipynb': Our main Jupyter notebook.
+- 'config.yaml': Contains our configs used to train and test the model.
+- 'train.ipynb': Our main Jupyter notebook.
+- 'model.py': Our build model using transfer learning.
 
 ### Description of key functions of each file in the project
+
+- 'augment_image'in 'train.ipynb': Apply a series of augmentations for SimCLR suitable for CIFAR-100.
+- 'preprocess_for_simclr' in 'train.ipynb': Preprocesses and applies augmentation for SimCLR.
+- 'contrastive_loss' in 'train.ipynb': Define contrastive loss function (NT-Xent loss)
+- 'ResNetSimCLR' in 'model.py: Our Model.
 
 ###  Instructions on how to run the code
 
@@ -67,7 +73,7 @@ This repository contains our team's project for ECBM E4040 at Columbia Universit
 4. **Run the Jupyter notebook** 🚀
     Start the server using the following command:
     ```bash
-    jupyter notebook xxx.ipynb 
+    jupyter notebook train.ipynb 
     ```
 
 ### Contribution
