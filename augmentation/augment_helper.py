@@ -1,67 +1,5 @@
 import tensorflow as tf
 
-# def crop_and_resize(image, target_height, target_width, prob=0.5):
-#     '''
-#     Randomly crops and resizes an image.
-#     Used the paper suggested sample_distorted_bounding_box function.
-
-#     Inputs:
-#     - image: An image tensor.
-#     - target_height: The height to resize the image to.
-#     - target_width: The width to resize the image to.
-#     - prob: The probability of applying the crop and resize.
-
-#     Outputs:
-#     - Transformed image tensor.
-#     '''
-#     if tf.random.uniform([]) < prob:
-#         # Crop the image
-#         ratio = target_width / target_height
-#         cropped_image = tf.image.sample_distorted_bounding_box(
-#             tf.shape(image),
-#             bounding_boxes=tf.constant([0.0, 0.0, 1.0, 1.0], dtype=tf.float32, shape=[1, 1, 4]),
-#             aspect_ratio_range=(0.75 * ratio, 4.0/3 * ratio),
-#             area_range=(0.08, 1.0))[0]
-        
-#         # Resize the image
-#         resized_image = tf.image.resize(cropped_image, [target_height, target_width])
-#         return resized_image
-#     else:
-#         return image
-
-def crop_and_resize_and_flip(image, target_height, target_width, prob=0.5):
-    """
-    Randomly crops, resizes, and flips an image.
-    Used the paper suggested sample_distorted_bounding_box function.
-
-    Inputs:
-    - image: An image tensor.
-    - target_height: The height to resize the image to.
-    - target_width: The width to resize the image to.
-    - prob: The probability of applying the crop and resize and flip.
-
-    Outputs:
-    - Transformed image tensor.
-    """
-    if tf.random.uniform([]) < prob:
-        # Crop the image
-        ratio = target_width / target_height
-        cropped_image = tf.image.sample_distorted_bounding_box(
-            tf.shape(image),
-            bounding_boxes=tf.constant([0.0, 0.0, 1.0, 1.0], dtype=tf.float32, shape=[1, 1, 4]),
-            aspect_ratio_range=(0.75 * ratio, 4.0/3 * ratio),
-            area_range=(0.08, 1.0))[0]
-
-        # Resize the image
-        resized_image = tf.image.resize(cropped_image, [target_height, target_width])
-
-        # Flip the image
-        flipped_image = tf.image.random_flip_left_right(resized_image)
-
-        return flipped_image
-    else:
-        return image
-
 def _compute_crop_shape(
     image_height, image_width, aspect_ratio, crop_proportion):
   """Compute aspect ratio-preserving shape for central crop.
@@ -178,6 +116,29 @@ def crop_and_resize(image, height, width):
   resized_image = tf.image.resize(image, [height, width], method=tf.image.ResizeMethod.BICUBIC)
   return resized_image
 
+def crop_and_resize_and_flip(image, target_height, target_width, flip_probability=0.5):
+    """
+    Randomly crops, resizes, and conditionally flips an image horizontally.
+
+    Inputs:
+    - image: Tensor representing the image.
+    - target_height: Desired height to resize the image.
+    - target_width: Desired width to resize the image.
+    - flip_probability: Probability of flipping the image horizontally (default 0.5).
+
+    Outputs:
+    - Transformed image tensor.
+    """
+    if tf.random.uniform([]) < flip_probability:
+        # Crop and resize the image
+        cropped_and_resized_image = crop_and_resize(image, target_height, target_width)
+
+        # Flip the image
+        flipped_image = tf.image.random_flip_left_right(cropped_and_resized_image)
+
+        return flipped_image
+    else:
+        return image
 
 def color_distort_drop(image):
     '''
