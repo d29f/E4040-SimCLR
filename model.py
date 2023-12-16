@@ -5,7 +5,7 @@ from tensorflow.keras.models import Model
 
 def ResNetSimCLR(input_dim, output_dim):
     # Input layer
-    inputs = Input(shape=(input_dim))
+    inputs = Input(shape=input_dim)
 
     # Base Encoder: ResNet50 without the top layer and pretrained weights
     base_encoder = ResNet50(include_top=False, weights=None, pooling='avg', input_tensor=inputs)
