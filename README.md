@@ -28,7 +28,7 @@ The dataset we are using is CIFAR-100, which is located in the tensorflow.keras.
 - '/augmentation': Contains all python code used for augmentation.
 - 'config.yaml': Contains our configs used to train and test the model.
 - 'train.ipynb': Our main Jupyter notebook.
-- 'model.py': Our build model using transfer learning.
+- 'model.py': Our built model using transfer learning.
 
 ### Description of key functions of each file in the project
 
