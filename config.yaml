@@ -1,8 +1,8 @@
-batch_size: 4096
-epochs: 100
-learning_rate: 4.8
+batch_size: 512
+epochs: 15
+learning_rate: 1.0
 weight_decay: 0.000001
-input_size: (224, 224, 3)
-output_size: 128
-temperature: 0.5
-data_path: ./data/imagenet
+input_size: 32
+output_size: 50
+temperature: 0.1
+data_path: ./data
