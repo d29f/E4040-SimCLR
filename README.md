@@ -18,7 +18,7 @@ This repository contains our team's project for ECBM E4040 at Columbia Universit
 ### Our project involves:
 
 1. Coding Replication of the Paper's Neural Network Model Using TensorFlow 2 and Python.
-2. The Final Report That Summarizes the Original Paper, Provides a Brief Review of the Relevant Literature, and Presents the Details of Our Project Work and Results.
+2. The Final Report that summarizes the original paper and presents the details of our project work and results.
 
 ### Dataset
 
