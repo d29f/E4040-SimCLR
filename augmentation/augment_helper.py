@@ -51,7 +51,8 @@ def crop_and_resize(image, height, width):
       max_attempts=100,
       scope=None)
   resized_image = tf.image.resize(image, [height, width], method=tf.image.ResizeMethod.BICUBIC)
-  return resized_image
+  flipped_image = tf.image.random_flip_left_right(resized_image)
+  return flipped_image
 
 def crop_and_resize_and_flip(image, target_height, target_width, flip_probability=1.0):
     """
@@ -74,6 +75,7 @@ def crop_and_resize_and_flip(image, target_height, target_width, flip_probabilit
 
         # Flip the image
         flipped_image = tf.image.random_flip_left_right(cropped_and_resized_image)
+        print(flipped_image.shape)
 
         return flipped_image
     else:
