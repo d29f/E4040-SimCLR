@@ -26,6 +26,7 @@ The dataset we are using is CIFAR-100, which is located in the tensorflow.keras.
 
 ### Repository Structure
 - '/augmentation': Contains all python code used for augmentation.
+- '/saved_models': Contains our saved model.
 - 'config.yaml': Contains our configs used to train and test the model.
 - 'train.ipynb': Our main Jupyter notebook.
 - 'model.py': Our built model using transfer learning.
