@@ -78,3 +78,6 @@ The dataset we are using is CIFAR-100, which is located in the tensorflow.keras.
     ```
 
 ### Contribution
+yy3152: Write the code for the SimCLR model, and the jupyter notebook for training. Perform training and testing. Write the abstract, the results, the Future Work, and the Conclusion part of the report.
+zy2540: Write parts of the code for the augmentation. Write introduction, summary of the original paper part,  Methodology part of the final report. Debug parts of the code.
+hh2982: Write parts of the code for the augmentation. Manage github repo and write readme page. Write Implementation part of the final report.
